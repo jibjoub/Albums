@@ -1,2 +1,2 @@
 # Albums
-Technical test for leboncoin
+Technical test
