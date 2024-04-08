@@ -6,19 +6,19 @@ import com.example.data.remote.api.AlbumApi
 import io.mockk.coEvery
 import io.mockk.mockk
 import kotlinx.coroutines.runBlocking
-import org.junit.Assert
+import okhttp3.ResponseBody
 import org.junit.Before
 import org.junit.Test
 import retrofit2.Response
 
 class AlbumsRepositoryImplTest {
     private lateinit var albumApi: AlbumApi
-    private lateinit var albumRepository: AlbumsRepositoryImpl
+    private lateinit var albumsRepository: AlbumsRepositoryImpl
 
     @Before
     fun setup() {
         albumApi = mockk()
-        albumRepository = AlbumsRepositoryImpl(albumApi)
+        albumsRepository = AlbumsRepositoryImpl(albumApi)
     }
 
     @Test
@@ -27,8 +27,28 @@ class AlbumsRepositoryImplTest {
             val albumsResponse = listOf(AlbumEntity("test", "test", "test", "test", "test"))
             coEvery { albumApi.getAlbums() } returns Response.success(albumsResponse)
 
-            albumRepository.getAlbums().collect { dataState ->
-                Assert.assertTrue(dataState is DataState.Success)
+            albumsRepository.getAlbums().collect { dataState ->
+                assert(dataState is DataState.Success)
+            }
+        }
+    }
+
+    @Test
+    fun `Given an error from the Retrofit Instance response, when we call getWorldCountries, then it should emit Error data state`() {
+        runBlocking {
+            coEvery { albumApi.getAlbums() } returns Response.error(400, ResponseBody.create(null, "test"))
+            albumsRepository.getAlbums().collect { dataState ->
+                assert(dataState is DataState.Error)
+            }
+        }
+    }
+
+    @Test
+    fun `Given a null body from the Retrofit Instance response, when we call getWorldCountries, then it should emit Error data state`() {
+        runBlocking {
+            coEvery { albumApi.getAlbums() } returns Response.success(null)
+            albumsRepository.getAlbums().collect { dataState ->
+                assert(dataState is DataState.Error)
             }
         }
     }
