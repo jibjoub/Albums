@@ -17,3 +17,4 @@ rootProject.name = "Albums"
 include(":app")
 include(":data")
 include(":common")
+include(":domain")

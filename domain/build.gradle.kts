@@ -1,13 +1,11 @@
+@Suppress("DSL_SCOPE_VIOLATION") // TODO: Remove once KTIJ-19369 is fixed
 plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.jetbrains.kotlin.android)
-    alias(libs.plugins.ktlint)
-    alias(libs.plugins.dagger.hilt.android)
-    alias(libs.plugins.jetbrains.kotlin.kapt)
 }
 
 android {
-    namespace = "com.example.data"
+    namespace = "com.example.domain"
     compileSdk = 34
 
     defaultConfig {
@@ -22,7 +20,7 @@ android {
             isMinifyEnabled = false
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
-                "proguard-rules.pro",
+                "proguard-rules.pro"
             )
         }
     }
@@ -38,16 +36,11 @@ android {
 dependencies {
 
     implementation(project(":common"))
-    implementation(project(":domain"))
+
     implementation(libs.androidx.ktx)
     implementation(libs.androidx.appcompat)
+    implementation(libs.material)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.test.ext.junit)
-
-    // Retrofit
-    implementation(libs.retrofit2.retrofit)
-    implementation(libs.retrofit2.converter.gson)
-    // DI
-    implementation(libs.hilt.android)
-    kapt(libs.hilt.android.compiler)
+    androidTestImplementation(libs.espresso.core)
 }
