@@ -36,12 +36,12 @@ android {
 }
 
 dependencies {
+    val mockkVersion = "1.13.7"
 
     implementation(project(":common"))
     implementation(project(":domain"))
     implementation(libs.androidx.ktx)
     implementation(libs.androidx.appcompat)
-    testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.test.ext.junit)
 
     // Retrofit
@@ -50,4 +50,8 @@ dependencies {
     // DI
     implementation(libs.hilt.android)
     kapt(libs.hilt.android.compiler)
+
+    // Test
+    testImplementation(libs.junit)
+    testImplementation("io.mockk:mockk:$mockkVersion")
 }
