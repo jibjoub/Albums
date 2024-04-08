@@ -23,7 +23,7 @@ class AlbumsRepositoryImpl
                 if (body.isNullOrEmpty()) {
                     return@map DataState.Error(Exception("Response body is null or empty"))
                 } else {
-                    return@map DataState.Success(body.map { it.mapToAlbumModel() })
+                    return@map DataState.Success(body.take(10).map { it.mapToAlbumModel() })
                 }
             }.catch {
                 DataState.Error(Exception(it))

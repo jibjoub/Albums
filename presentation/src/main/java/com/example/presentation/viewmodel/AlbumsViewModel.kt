@@ -19,7 +19,7 @@ class AlbumsViewModel
     constructor(getAlbumsUseCase: GetAlbumsUseCase) : ViewModel() {
         val uiState: StateFlow<DataState<List<AlbumUi>>> =
             getAlbumsUseCase().map { state ->
-                state.mapData { albumModels -> albumModels.map { albumModel -> AlbumUi.mapToAlbumUi(albumModel) } }
+                state.mapData { albumModels -> albumModels.map { AlbumUi.mapToAlbumUi(it) } }
             }.stateIn(
                 initialValue = DataState.Loading,
                 scope = viewModelScope,
