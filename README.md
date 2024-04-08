@@ -30,5 +30,6 @@ The app is fetching all the 100 first albums from the API and displays them in a
 
 ## Future improvements
 - Persistence of already fetched data by using a framework like Room
+- Implement pagination
 - Improve UI
 - Application Icon
