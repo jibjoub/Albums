@@ -1,6 +1,6 @@
 package com.example.domain.model
 
-data class AlbumModel (
+data class AlbumModel(
     val id: String?,
     val albumId: String?,
     val title: String?,

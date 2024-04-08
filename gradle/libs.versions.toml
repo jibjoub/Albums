@@ -3,6 +3,7 @@ androidGradlePlugin = "8.2.1"
 androidLibrary = "8.2.1"
 jetbrainsKotlinAndroid = "1.9.0"
 appcompat = "1.6.1"
+hiltNavigationCompose = "1.1.0"
 ktx = "1.12.0"
 hilt = "2.46.1"
 compose = "1.8.2"
@@ -17,10 +18,12 @@ material = "1.11.0"
 [libraries]
 androidx-appcompat = { module = "androidx.appcompat:appcompat", version.ref = "appcompat" }
 androidx-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "ktx" }
+androidx-lifecycle-livedata = { group = "androidx.lifecycle", name = "lifecycle-livedata-ktx", version.ref = "androidLifecycle" }
 androidx-lifecycle-runtime = { group = "androidx.lifecycle", name = "lifecycle-runtime-ktx", version.ref = "androidLifecycle" }
 # DI
 hilt-android = { group = "com.google.dagger", name = "hilt-android", version.ref = "hilt" }
 hilt-android-compiler = { group = "com.google.dagger", name = "hilt-android-compiler", version.ref = "hilt" }
+androidx-hilt-navigation-compose = { module = "androidx.hilt:hilt-navigation-compose", version.ref = "hiltNavigationCompose" }
 # Compose
 activity-compose = { group = "androidx.activity", name = "activity-compose", version.ref = "compose" }
 compose-ui-ui = { group = "androidx.compose.ui", name = "ui" }

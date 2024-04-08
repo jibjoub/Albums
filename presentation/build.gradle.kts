@@ -8,7 +8,7 @@ plugins {
 }
 
 android {
-    namespace = "com.example.domain"
+    namespace = "com.example.presentation"
     compileSdk = 34
 
     defaultConfig {
@@ -38,15 +38,21 @@ android {
 
 dependencies {
 
+    implementation(project(":domain"))
     implementation(project(":common"))
 
     implementation(libs.androidx.ktx)
     implementation(libs.androidx.appcompat)
-    implementation(libs.material)
-    testImplementation(libs.junit)
-    androidTestImplementation(libs.androidx.test.ext.junit)
-    androidTestImplementation(libs.espresso.core)
+    implementation(libs.androidx.lifecycle.livedata)
+    implementation(libs.androidx.lifecycle.runtime)
+    // Compose
+    implementation(libs.activity.compose)
+    implementation(libs.compose.ui.ui)
+    implementation(libs.compose.ui.graphics)
+//    implementation(libs.compose.material3)
     // DI
     implementation(libs.hilt.android)
     kapt(libs.hilt.android.compiler)
+    // Test
+    testImplementation(libs.junit)
 }

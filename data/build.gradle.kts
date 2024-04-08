@@ -50,7 +50,6 @@ dependencies {
     // DI
     implementation(libs.hilt.android)
     kapt(libs.hilt.android.compiler)
-
     // Test
     testImplementation(libs.junit)
     testImplementation("io.mockk:mockk:$mockkVersion")

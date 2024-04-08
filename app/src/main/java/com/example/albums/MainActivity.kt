@@ -8,10 +8,18 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.hilt.navigation.compose.hiltViewModel
 import com.example.albums.ui.theme.AlbumsTheme
+import com.example.common.DataState
+import com.example.presentation.model.AlbumUi
+import com.example.presentation.viewmodel.AlbumsViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -22,6 +30,8 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background,
                 ) {
+                    val albumsViewModel: AlbumsViewModel = hiltViewModel()
+                    val uiState: DataState<List<AlbumUi>> by albumsViewModel.uiState.collectAsState()
                     Greeting("Android")
                 }
             }
