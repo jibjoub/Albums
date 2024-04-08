@@ -12,10 +12,10 @@ data class AlbumEntity(
 
 fun AlbumEntity.mapToAlbumModel(): AlbumModel {
     return AlbumModel(
-        id = null,
-        albumId = null,
-        title = null,
-        url = null,
-        thumbnailUrl = null,
+        id = this.id,
+        albumId = this.albumId,
+        title = this.title,
+        url = this.url,
+        thumbnailUrl = this.thumbnailUrl,
     )
 }
