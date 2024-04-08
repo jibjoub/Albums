@@ -1,4 +1,4 @@
-package com.example.albums
+package com.example.data
 
 import org.junit.Assert.*
 import org.junit.Test
