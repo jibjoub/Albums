@@ -26,6 +26,7 @@ class AlbumsRepositoryImpl
                     return@map DataState.Success(body.take(10).map { it.mapToAlbumModel() })
                 }
             }.catch {
-                DataState.Error(Exception(it))
+                    e ->
+                emit(DataState.Error(Exception(e)))
             }
     }
